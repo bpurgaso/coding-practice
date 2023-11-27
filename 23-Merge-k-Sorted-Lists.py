@@ -9,34 +9,31 @@ class Solution:
         merged_list = [ListNode]
 
         # get the first node in each list
-        tmp_head = ListNode()
-        tmp = tmp_head
-        
-        current_nodes = lists
+        tmp_head = tmp = ListNode()
 
-        # while any of the current_nodes have a next node
-        while any(node for node in current_nodes if node is not None):
+        # while any of the lists have a next node
+        while any(node for node in lists if node is not None):
             
             # get the minimum value of the current nodes
-            print(f"current_nodes: {current_nodes}")
-            min_value = min(node.val for node in current_nodes if node is not None)
-            print(f"min_value: {min_value}")
+            #print(f"lists: {lists}")
+            min_value = min(node.val for node in lists if node is not None)
+            #print(f"min_value: {min_value}")
 
             # get the index of the minimum value
-            for x in current_nodes:
+            for x in lists:
                 if x is not None and x.val == min_value:
-                    min_index = current_nodes.index(x)
+                    min_index = lists.index(x)
                     break
             
             # move the node to the merged list
-            tmp.next = current_nodes[min_index]
-            tmp = current_nodes[min_index]
+            tmp.next = lists[min_index]
+            tmp = lists[min_index]
             
             # pop the node with minimum value
-            current_nodes[min_index] = current_nodes[min_index].next
-            print(f"current_nodes [end]: {current_nodes}")
+            lists[min_index] = lists[min_index].next
+            #print(f"lists [end]: {lists}")
 
-        print(f"current_nodes [Final]: {current_nodes}")
+        #print(f"lists [Final]: {lists}")
         return tmp_head.next
                 
             
