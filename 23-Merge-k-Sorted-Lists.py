@@ -1,3 +1,8 @@
+'''
+Platform: Leet Code
+Question: 23. Merge k Sorted Lists
+'''
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -6,18 +11,30 @@ class ListNode:
 
 class Solution:
     def mergeKLists(self, lists: list[ListNode]) -> [ListNode]:
+        """
+        Merge k sorted linked lists into one sorted list.
+
+        Complexity:
+            O(nk) time where n is the average length of the lists and k the number of lists.
+
+        Args:
+            lists (list[ListNode]): A list of ListNode objects representing the head nodes of the k sorted lists.
+
+        Returns:
+            ListNode: The head node of the merged sorted list.
+        """
         merged_list = [ListNode]
 
         # get the first node in each list
         tmp_head = tmp = ListNode()
 
         # while any of the lists have a next node
-        while any(node for node in lists if node is not None):
-            
+        while True:
             # get the minimum value of the current nodes
-            #print(f"lists: {lists}")
-            min_value = min(node.val for node in lists if node is not None)
-            #print(f"min_value: {min_value}")
+            try:
+                min_value = min(node.val for node in lists if node is not None)
+            except ValueError:
+                return tmp_head.next
 
             # get the index of the minimum value
             for x in lists:
@@ -30,11 +47,10 @@ class Solution:
             tmp = lists[min_index]
             
             # pop the node with minimum value
-            lists[min_index] = lists[min_index].next
-            #print(f"lists [end]: {lists}")
-
-        #print(f"lists [Final]: {lists}")
-        return tmp_head.next
+            if lists[min_index].next is None:
+                del lists[min_index]
+            else:
+                lists[min_index] = lists[min_index].next
                 
             
                 
@@ -53,4 +69,4 @@ if __name__ == '__main__':
             tmp = tmp.next
         input_lists.append(tmp_head.next)
     
-    print(solution.mergeKLists(input_lists))
+    #print(solution.mergeKLists(input_lists))
