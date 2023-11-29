@@ -3,10 +3,7 @@ The Minion Game
 https://www.hackerrank.com/challenges/the-minion-game/problem
 '''
 
-from itertools import combinations
 from collections import defaultdict
-from pprint import pprint as pp
-
 
 def minion_game(string):
     # your code goes here
