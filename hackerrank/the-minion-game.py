@@ -9,9 +9,9 @@ def minion_game(string):
     # your code goes here
 
     '''
-    1. compute all substrings; storing in a tree structure
-    3. compute score for each player by only traversing trees with AEIOU roots for Kevin and others for Stuart
-    4. print winner and score
+    1. instead of computing all substrings, calculate the number of substrings the "root" character contributes to in a single pass
+    2. determine the winner by counting the number of occurrences for AEIOU or not
+    3. print the winner and score
     '''
 
 
